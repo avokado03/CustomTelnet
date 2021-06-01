@@ -95,6 +95,7 @@ namespace TelnetClient
             // 
             // btnStop
             // 
+            this.btnStop.Enabled = false;
             this.btnStop.Location = new System.Drawing.Point(113, 91);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 29);
@@ -124,6 +125,7 @@ namespace TelnetClient
             this.gbCommand.Controls.Add(this.btnSend);
             this.gbCommand.Controls.Add(this.txtCommand);
             this.gbCommand.Controls.Add(this.command);
+            this.gbCommand.Enabled = false;
             this.gbCommand.Location = new System.Drawing.Point(335, 12);
             this.gbCommand.Name = "gbCommand";
             this.gbCommand.Size = new System.Drawing.Size(303, 126);

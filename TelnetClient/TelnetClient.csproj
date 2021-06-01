@@ -49,10 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AddressValidator.cs" />
-    <Compile Include="Common\LogHelpers.cs" />
-    <Compile Include="Common\NetworkConfigsModel.cs" />
-    <Compile Include="Common\NetworkInfoMessages.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

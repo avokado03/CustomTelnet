@@ -36,6 +36,7 @@
       <HintPath>..\MyTCPLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CmdService.cs" />
+    <Compile Include="Common\ConfigReader.cs" />
+    <Compile Include="Common\Configurations.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

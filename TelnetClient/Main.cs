@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using TelnetClient.Common;
 using MyTCPLib;
 using MyTCPLib.Client;
+using MyTCPLib.Common;
 using System.Text;
 
 namespace TelnetClient
@@ -30,7 +30,6 @@ namespace TelnetClient
             _tcpClient = new MyTcpClient();
             _tcpClient.StringEncoder = Encoding.Unicode;
             _tcpClient.DataReceived += Client_DataReceived;
-            SwitchFormState();
         }
 
         /// <summary>
@@ -41,7 +40,7 @@ namespace TelnetClient
             try
             {
                 var connectionModel = new NetworkConfigsModel(txtIp.Text, txtPort.Text);
-                _tcpClient.Connect(connectionModel.Ip, connectionModel.Port);
+                _tcpClient.Connect(connectionModel.Ip.ToString(), connectionModel.Port);
                 SwitchFormState();
             }
             catch(Exception ex)
@@ -92,6 +91,7 @@ namespace TelnetClient
         /// </summary>
         public void SwitchFormState()
         {
+            btnStart.Enabled = !btnStart.Enabled;
             btnStop.Enabled = !btnStop.Enabled;
             gbCommand.Enabled = !gbCommand.Enabled;
         }

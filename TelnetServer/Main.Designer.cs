@@ -69,12 +69,14 @@ namespace TelnetServer
             // 
             // btnStop
             // 
+            this.btnStop.Enabled = false;
             this.btnStop.Location = new System.Drawing.Point(113, 124);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 29);
             this.btnStop.TabIndex = 5;
             this.btnStop.Text = "Стоп";
             this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // txtIp
             // 
@@ -90,8 +92,10 @@ namespace TelnetServer
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 29);
             this.btnStart.TabIndex = 4;
+            this.btnStart.TabStop = false;
             this.btnStart.Text = "Старт";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // Port
             // 
@@ -129,6 +133,7 @@ namespace TelnetServer
             this.btnResultClean.TabIndex = 8;
             this.btnResultClean.Text = "Очистить";
             this.btnResultClean.UseVisualStyleBackColor = true;
+            this.btnResultClean.Click += new System.EventHandler(this.btnResultClean_Click);
             // 
             // txtResult
             // 
@@ -149,6 +154,8 @@ namespace TelnetServer
             this.Controls.Add(this.gbManage);
             this.Name = "Main";
             this.Text = "TcpServer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
+            this.Load += new System.EventHandler(this.Main_Load);
             this.gbManage.ResumeLayout(false);
             this.gbManage.PerformLayout();
             this.gbResult.ResumeLayout(false);
