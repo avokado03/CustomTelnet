@@ -29,20 +29,146 @@ namespace TelnetServer
         /// </summary>
         private void InitializeComponent()
         {
+            this.gbManage = new System.Windows.Forms.GroupBox();
+            this.Ip = new System.Windows.Forms.Label();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.txtIp = new System.Windows.Forms.TextBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.Port = new System.Windows.Forms.Label();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.gbResult = new System.Windows.Forms.GroupBox();
+            this.btnResultClean = new System.Windows.Forms.Button();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.gbManage.SuspendLayout();
+            this.gbResult.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // gbManage
+            // 
+            this.gbManage.Controls.Add(this.Ip);
+            this.gbManage.Controls.Add(this.btnStop);
+            this.gbManage.Controls.Add(this.txtIp);
+            this.gbManage.Controls.Add(this.btnStart);
+            this.gbManage.Controls.Add(this.Port);
+            this.gbManage.Controls.Add(this.txtPort);
+            this.gbManage.Location = new System.Drawing.Point(12, 12);
+            this.gbManage.Name = "gbManage";
+            this.gbManage.Size = new System.Drawing.Size(307, 225);
+            this.gbManage.TabIndex = 7;
+            this.gbManage.TabStop = false;
+            this.gbManage.Text = "Управление подключением";
+            // 
+            // Ip
+            // 
+            this.Ip.AutoSize = true;
+            this.Ip.Location = new System.Drawing.Point(35, 60);
+            this.Ip.Name = "Ip";
+            this.Ip.Size = new System.Drawing.Size(19, 17);
+            this.Ip.TabIndex = 0;
+            this.Ip.Text = "Ip";
+            // 
+            // btnStop
+            // 
+            this.btnStop.Location = new System.Drawing.Point(113, 124);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(75, 29);
+            this.btnStop.TabIndex = 5;
+            this.btnStop.Text = "Стоп";
+            this.btnStop.UseVisualStyleBackColor = true;
+            // 
+            // txtIp
+            // 
+            this.txtIp.Location = new System.Drawing.Point(60, 57);
+            this.txtIp.Name = "txtIp";
+            this.txtIp.Size = new System.Drawing.Size(231, 22);
+            this.txtIp.TabIndex = 1;
+            this.txtIp.Text = "127.0.0.1";
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(22, 124);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(75, 29);
+            this.btnStart.TabIndex = 4;
+            this.btnStart.Text = "Старт";
+            this.btnStart.UseVisualStyleBackColor = true;
+            // 
+            // Port
+            // 
+            this.Port.AutoSize = true;
+            this.Port.Location = new System.Drawing.Point(20, 90);
+            this.Port.Name = "Port";
+            this.Port.Size = new System.Drawing.Size(34, 17);
+            this.Port.TabIndex = 2;
+            this.Port.Text = "Port";
+            // 
+            // txtPort
+            // 
+            this.txtPort.Location = new System.Drawing.Point(60, 87);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(87, 22);
+            this.txtPort.TabIndex = 3;
+            this.txtPort.Text = "5001";
+            // 
+            // gbResult
+            // 
+            this.gbResult.Controls.Add(this.btnResultClean);
+            this.gbResult.Controls.Add(this.txtResult);
+            this.gbResult.Location = new System.Drawing.Point(340, 12);
+            this.gbResult.Name = "gbResult";
+            this.gbResult.Size = new System.Drawing.Size(448, 225);
+            this.gbResult.TabIndex = 9;
+            this.gbResult.TabStop = false;
+            this.gbResult.Text = "Результат";
+            // 
+            // btnResultClean
+            // 
+            this.btnResultClean.Location = new System.Drawing.Point(336, 184);
+            this.btnResultClean.Name = "btnResultClean";
+            this.btnResultClean.Size = new System.Drawing.Size(106, 29);
+            this.btnResultClean.TabIndex = 8;
+            this.btnResultClean.Text = "Очистить";
+            this.btnResultClean.UseVisualStyleBackColor = true;
+            // 
+            // txtResult
+            // 
+            this.txtResult.Enabled = false;
+            this.txtResult.Location = new System.Drawing.Point(7, 22);
+            this.txtResult.Multiline = true;
+            this.txtResult.Name = "txtResult";
+            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtResult.Size = new System.Drawing.Size(435, 156);
+            this.txtResult.TabIndex = 0;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 243);
+            this.Controls.Add(this.gbResult);
+            this.Controls.Add(this.gbManage);
             this.Name = "Main";
             this.Text = "TcpServer";
+            this.gbManage.ResumeLayout(false);
+            this.gbManage.PerformLayout();
+            this.gbResult.ResumeLayout(false);
+            this.gbResult.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.GroupBox gbManage;
+        private System.Windows.Forms.Label Ip;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.TextBox txtIp;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Label Port;
+        private System.Windows.Forms.TextBox txtPort;
+        private System.Windows.Forms.GroupBox gbResult;
+        private System.Windows.Forms.Button btnResultClean;
+        private System.Windows.Forms.TextBox txtResult;
     }
 }
 

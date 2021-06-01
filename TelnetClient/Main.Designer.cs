@@ -37,13 +37,13 @@ namespace TelnetClient
             this.btnStop = new System.Windows.Forms.Button();
             this.gbManage = new System.Windows.Forms.GroupBox();
             this.gbCommand = new System.Windows.Forms.GroupBox();
-            this.command = new System.Windows.Forms.Label();
-            this.txtCommand = new System.Windows.Forms.TextBox();
             this.btnClean = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
+            this.txtCommand = new System.Windows.Forms.TextBox();
+            this.command = new System.Windows.Forms.Label();
             this.gbResult = new System.Windows.Forms.GroupBox();
-            this.txtResult = new System.Windows.Forms.TextBox();
             this.btnResultClean = new System.Windows.Forms.Button();
+            this.txtResult = new System.Windows.Forms.TextBox();
             this.gbManage.SuspendLayout();
             this.gbCommand.SuspendLayout();
             this.gbResult.SuspendLayout();
@@ -131,22 +131,6 @@ namespace TelnetClient
             this.gbCommand.TabStop = false;
             this.gbCommand.Text = "Команды";
             // 
-            // command
-            // 
-            this.command.AutoSize = true;
-            this.command.Location = new System.Drawing.Point(13, 24);
-            this.command.Name = "command";
-            this.command.Size = new System.Drawing.Size(156, 17);
-            this.command.TabIndex = 0;
-            this.command.Text = "Введите команду cmd:";
-            // 
-            // txtCommand
-            // 
-            this.txtCommand.Location = new System.Drawing.Point(16, 54);
-            this.txtCommand.Name = "txtCommand";
-            this.txtCommand.Size = new System.Drawing.Size(272, 22);
-            this.txtCommand.TabIndex = 1;
-            // 
             // btnClean
             // 
             this.btnClean.Location = new System.Drawing.Point(129, 91);
@@ -167,6 +151,22 @@ namespace TelnetClient
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
+            // txtCommand
+            // 
+            this.txtCommand.Location = new System.Drawing.Point(16, 54);
+            this.txtCommand.Name = "txtCommand";
+            this.txtCommand.Size = new System.Drawing.Size(272, 22);
+            this.txtCommand.TabIndex = 1;
+            // 
+            // command
+            // 
+            this.command.AutoSize = true;
+            this.command.Location = new System.Drawing.Point(13, 24);
+            this.command.Name = "command";
+            this.command.Size = new System.Drawing.Size(156, 17);
+            this.command.TabIndex = 0;
+            this.command.Text = "Введите команду cmd:";
+            // 
             // gbResult
             // 
             this.gbResult.Controls.Add(this.btnResultClean);
@@ -178,16 +178,6 @@ namespace TelnetClient
             this.gbResult.TabStop = false;
             this.gbResult.Text = "Результат";
             // 
-            // txtResult
-            // 
-            this.txtResult.Enabled = false;
-            this.txtResult.Location = new System.Drawing.Point(7, 22);
-            this.txtResult.Multiline = true;
-            this.txtResult.Name = "txtResult";
-            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(613, 378);
-            this.txtResult.TabIndex = 0;
-            // 
             // btnResultClean
             // 
             this.btnResultClean.Location = new System.Drawing.Point(505, 407);
@@ -197,6 +187,16 @@ namespace TelnetClient
             this.btnResultClean.Text = "Очистить";
             this.btnResultClean.UseVisualStyleBackColor = true;
             this.btnResultClean.Click += new System.EventHandler(this.btnResultClean_Click);
+            // 
+            // txtResult
+            // 
+            this.txtResult.Enabled = false;
+            this.txtResult.Location = new System.Drawing.Point(7, 22);
+            this.txtResult.Multiline = true;
+            this.txtResult.Name = "txtResult";
+            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtResult.Size = new System.Drawing.Size(613, 378);
+            this.txtResult.TabIndex = 0;
             // 
             // Main
             // 
