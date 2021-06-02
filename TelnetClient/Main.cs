@@ -56,7 +56,12 @@ namespace TelnetClient
         {
             txtResult.Invoke((MethodInvoker) delegate () 
             {
-                txtResult.Text += e.DataString;
+                if(e.DataString != "exit")
+                {
+                    txtResult.Text += e.DataString;
+                    return;
+                }
+                Disconnect();
             });
         }
 
@@ -81,24 +86,29 @@ namespace TelnetClient
         /// </summary>
         private void btnStop_Click(object sender, EventArgs e)
         {
-            _tcpClient.Disconnect();
-            SwitchFormState();
+            Disconnect();
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            _tcpClient.Write(txtCommand.Text);
         }
 
         /// <summary>
         /// Переключение состояния формы
         /// (активность компонентов в зависимости от состояния подключения).
         /// </summary>
-        public void SwitchFormState()
+        private void SwitchFormState()
         {
             btnStart.Enabled = !btnStart.Enabled;
             btnStop.Enabled = !btnStop.Enabled;
             gbCommand.Enabled = !gbCommand.Enabled;
         }
 
-        private void btnSend_Click(object sender, EventArgs e)
+        private void Disconnect()
         {
-            _tcpClient.Write(txtCommand.Text);
+            _tcpClient.Disconnect();
+            SwitchFormState();
         }
     }
 }

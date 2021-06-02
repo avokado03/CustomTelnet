@@ -2,6 +2,8 @@
 using MyTCPLib.Common;
 using MyTCPLib.Server;
 using System;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
 
@@ -39,13 +41,33 @@ namespace TelnetServer
             _cmdService = new CmdService();
             _tcpServer.StringEncoder = Encoding.Unicode;
             _tcpServer.DataReceived += Server_DataReceived;
+            _tcpServer.ClientConnected += Server_ClientConnected;
+            _tcpServer.ClientDisconnected += Server_ClientDisconnected;
         }
+
+        private void Server_ClientDisconnected(object sender, TcpClient e)
+        {
+            txtResult.Invoke((MethodInvoker)delegate ()
+            {
+                txtResult.Text += LogHelpers
+                    .ToLogMessage(GetClientStateInfo(e.Client.RemoteEndPoint, "Клиент разорвал соединение"));
+            });
+        }
+
+        private void Server_ClientConnected(object sender, TcpClient e)
+        {
+            txtResult.Invoke((MethodInvoker)delegate ()
+            {
+                txtResult.Text += LogHelpers
+                    .ToLogMessage(GetClientStateInfo(e.Client.RemoteEndPoint, "Клиент подключен"));
+            });
+        }   
 
         private void Server_DataReceived(object sender, Sender e)
         {
             txtResult.Invoke((MethodInvoker) delegate () 
             {
-                txtResult.Text += e.DataString;
+                txtResult.Text += LogHelpers.ToLogMessage(e.DataString);
                 var response = _cmdService.Run(e.DataString);
                 e.Send(response + Environment.NewLine);
             });
@@ -53,6 +75,7 @@ namespace TelnetServer
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            _tcpServer.Broadcast("exit");
             _tcpServer.Stop();
             txtResult.Text += LogHelpers.ToLogMessage("Сервер остановлен.");
             SwitchFormState();
@@ -77,6 +100,15 @@ namespace TelnetServer
         {
             _tcpServer.Stop();
             Application.Exit();
+        }
+
+        /// <summary>
+        /// Получает кастомизированную информацию о состоянии соединения.
+        /// </summary>
+        private string GetClientStateInfo(EndPoint endPoint, string message)
+        {
+            var toIpEndPoint = (IPEndPoint)endPoint;
+            return $"{message} - IP: {toIpEndPoint.Address}, Port: {toIpEndPoint.Port}";
         }
     }
 }

@@ -192,10 +192,10 @@ namespace TelnetClient
             // 
             // txtResult
             // 
-            this.txtResult.Enabled = false;
             this.txtResult.Location = new System.Drawing.Point(7, 22);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
+            this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtResult.Size = new System.Drawing.Size(613, 378);
             this.txtResult.TabIndex = 0;
