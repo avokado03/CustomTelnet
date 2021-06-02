@@ -39,12 +39,14 @@ namespace TelnetServer
             this.gbResult = new System.Windows.Forms.GroupBox();
             this.btnResultClean = new System.Windows.Forms.Button();
             this.txtResult = new System.Windows.Forms.TextBox();
+            this.btnIpInfo = new System.Windows.Forms.Button();
             this.gbManage.SuspendLayout();
             this.gbResult.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbManage
             // 
+            this.gbManage.Controls.Add(this.btnIpInfo);
             this.gbManage.Controls.Add(this.Ip);
             this.gbManage.Controls.Add(this.btnStop);
             this.gbManage.Controls.Add(this.txtIp);
@@ -53,7 +55,7 @@ namespace TelnetServer
             this.gbManage.Controls.Add(this.txtPort);
             this.gbManage.Location = new System.Drawing.Point(12, 12);
             this.gbManage.Name = "gbManage";
-            this.gbManage.Size = new System.Drawing.Size(307, 225);
+            this.gbManage.Size = new System.Drawing.Size(307, 310);
             this.gbManage.TabIndex = 7;
             this.gbManage.TabStop = false;
             this.gbManage.Text = "Управление подключением";
@@ -70,9 +72,9 @@ namespace TelnetServer
             // btnStop
             // 
             this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(113, 124);
+            this.btnStop.Location = new System.Drawing.Point(153, 124);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 29);
+            this.btnStop.Size = new System.Drawing.Size(138, 29);
             this.btnStop.TabIndex = 5;
             this.btnStop.Text = "Стоп";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -90,7 +92,7 @@ namespace TelnetServer
             // 
             this.btnStart.Location = new System.Drawing.Point(22, 124);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 29);
+            this.btnStart.Size = new System.Drawing.Size(125, 29);
             this.btnStart.TabIndex = 4;
             this.btnStart.TabStop = false;
             this.btnStart.Text = "Старт";
@@ -120,14 +122,14 @@ namespace TelnetServer
             this.gbResult.Controls.Add(this.txtResult);
             this.gbResult.Location = new System.Drawing.Point(340, 12);
             this.gbResult.Name = "gbResult";
-            this.gbResult.Size = new System.Drawing.Size(448, 225);
+            this.gbResult.Size = new System.Drawing.Size(448, 310);
             this.gbResult.TabIndex = 9;
             this.gbResult.TabStop = false;
             this.gbResult.Text = "Результат";
             // 
             // btnResultClean
             // 
-            this.btnResultClean.Location = new System.Drawing.Point(336, 184);
+            this.btnResultClean.Location = new System.Drawing.Point(336, 275);
             this.btnResultClean.Name = "btnResultClean";
             this.btnResultClean.Size = new System.Drawing.Size(106, 29);
             this.btnResultClean.TabIndex = 8;
@@ -137,21 +139,33 @@ namespace TelnetServer
             // 
             // txtResult
             // 
-            this.txtResult.Enabled = false;
             this.txtResult.Location = new System.Drawing.Point(7, 22);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
+            this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(435, 156);
+            this.txtResult.Size = new System.Drawing.Size(435, 247);
             this.txtResult.TabIndex = 0;
+            // 
+            // btnIpInfo
+            // 
+            this.btnIpInfo.Enabled = false;
+            this.btnIpInfo.Location = new System.Drawing.Point(22, 188);
+            this.btnIpInfo.Name = "btnIpInfo";
+            this.btnIpInfo.Size = new System.Drawing.Size(269, 34);
+            this.btnIpInfo.TabIndex = 6;
+            this.btnIpInfo.Text = "Сведения об адресах подключения";
+            this.btnIpInfo.UseVisualStyleBackColor = true;
+            this.btnIpInfo.Click += new System.EventHandler(this.btnIpInfo_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 243);
+            this.ClientSize = new System.Drawing.Size(800, 334);
             this.Controls.Add(this.gbResult);
             this.Controls.Add(this.gbManage);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Main";
             this.Text = "TcpServer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
@@ -176,6 +190,7 @@ namespace TelnetServer
         private System.Windows.Forms.GroupBox gbResult;
         private System.Windows.Forms.Button btnResultClean;
         private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.Button btnIpInfo;
     }
 }
 

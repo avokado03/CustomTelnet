@@ -9,16 +9,25 @@ using System.Windows.Forms;
 
 namespace TelnetServer
 {
+    /// <summary>
+    /// Логика главной формы.
+    /// </summary>
     public partial class Main : Form
     {
         private MyTcpServer _tcpServer = null;
         private CmdService _cmdService = null;
 
+        /// <summary>
+        /// Конструктор.
+        /// </summary>
         public Main()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Событие кнопки старта сервера.
+        /// </summary>
         private void btnStart_Click(object sender, EventArgs e)
         {
             try
@@ -35,6 +44,9 @@ namespace TelnetServer
 
         }
 
+        /// <summary>
+        /// Событие загрузки главной формы.
+        /// </summary>
         private void Main_Load(object sender, EventArgs e)
         {
             _tcpServer = new MyTcpServer();
@@ -45,6 +57,9 @@ namespace TelnetServer
             _tcpServer.ClientDisconnected += Server_ClientDisconnected;
         }
 
+        /// <summary>
+        /// Событие отключения клиента.
+        /// </summary>
         private void Server_ClientDisconnected(object sender, TcpClient e)
         {
             txtResult.Invoke((MethodInvoker)delegate ()
@@ -54,6 +69,9 @@ namespace TelnetServer
             });
         }
 
+        /// <summary>
+        /// Событие подключения клиента.
+        /// </summary>
         private void Server_ClientConnected(object sender, TcpClient e)
         {
             txtResult.Invoke((MethodInvoker)delegate ()
@@ -63,6 +81,9 @@ namespace TelnetServer
             });
         }   
 
+        /// <summary>
+        /// Событие получения сообщения.
+        /// </summary>
         private void Server_DataReceived(object sender, Sender e)
         {
             txtResult.Invoke((MethodInvoker) delegate () 
@@ -73,6 +94,10 @@ namespace TelnetServer
             });
         }
 
+        /// <summary>
+        /// Событие кнопки остановки сервера
+        /// с оповещением клиентов.
+        /// </summary>
         private void btnStop_Click(object sender, EventArgs e)
         {
             _tcpServer.Broadcast("exit");
@@ -89,13 +114,20 @@ namespace TelnetServer
         {
             btnStart.Enabled = !btnStart.Enabled;
             btnStop.Enabled = !btnStop.Enabled;
+            btnIpInfo.Enabled = !btnIpInfo.Enabled;
         }
 
+        /// <summary>
+        /// Событие очистки окна с логами.
+        /// </summary>
         private void btnResultClean_Click(object sender, EventArgs e)
         {
             txtResult.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Событие закрытия главное формы (для точной остановки сервера).
+        /// </summary>
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             _tcpServer.Stop();
@@ -108,7 +140,21 @@ namespace TelnetServer
         private string GetClientStateInfo(EndPoint endPoint, string message)
         {
             var toIpEndPoint = (IPEndPoint)endPoint;
-            return $"{message} - IP: {toIpEndPoint.Address}, Port: {toIpEndPoint.Port}";
+            return $"{message} {toIpEndPoint.Address}:{toIpEndPoint.Port}";
+        }
+
+        /// <summary>
+        /// Событие кнопки получения информации об IP клиентов.
+        /// </summary>
+        private void btnIpInfo_Click(object sender, EventArgs e)
+        {
+           txtResult.Invoke((MethodInvoker)delegate ()
+           {
+               var ips = _tcpServer.GetListeningIPs();
+               txtResult.Text += LogHelpers.ToLogMessage("Адреса подключенных клиентов:");
+               foreach (var ip in ips)
+                   txtResult.Text += ip.ToString();
+           });
         }
     }
 }

@@ -208,6 +208,7 @@ namespace TelnetClient
             this.Controls.Add(this.gbResult);
             this.Controls.Add(this.gbCommand);
             this.Controls.Add(this.gbManage);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Main";
             this.Text = "TcpClient";
             this.Load += new System.EventHandler(this.Main_Load);

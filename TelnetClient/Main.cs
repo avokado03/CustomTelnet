@@ -50,7 +50,7 @@ namespace TelnetClient
         }
 
         /// <summary>
-        /// 
+        /// Событие получения сообщения.
         /// </summary>
         private void Client_DataReceived(object sender, Sender e)
         {
@@ -61,6 +61,7 @@ namespace TelnetClient
                     txtResult.Text += e.DataString;
                     return;
                 }
+                txtResult.Text += "Сервер разорвал соединение";
                 Disconnect();
             });
         }
@@ -89,6 +90,9 @@ namespace TelnetClient
             Disconnect();
         }
 
+        /// <summary>
+        /// Событие кнопки отправки команды.
+        /// </summary>
         private void btnSend_Click(object sender, EventArgs e)
         {
             _tcpClient.Write(txtCommand.Text);
@@ -105,6 +109,9 @@ namespace TelnetClient
             gbCommand.Enabled = !gbCommand.Enabled;
         }
 
+        /// <summary>
+        /// Разрывает соедиение.
+        /// </summary>
         private void Disconnect()
         {
             _tcpClient.Disconnect();
