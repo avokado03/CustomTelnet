@@ -117,5 +117,17 @@ namespace TelnetClient
             _tcpClient.Disconnect();
             SwitchFormState();
         }
+
+        /// <summary>
+        /// Событие кнопки информации.
+        /// </summary>
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Введите одну или несколько команд, разделенных символом \"|\"",
+                "Информация",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
     }
 }

@@ -44,6 +44,7 @@ namespace TelnetClient
             this.gbResult = new System.Windows.Forms.GroupBox();
             this.btnResultClean = new System.Windows.Forms.Button();
             this.txtResult = new System.Windows.Forms.TextBox();
+            this.btnInfo = new System.Windows.Forms.Button();
             this.gbManage.SuspendLayout();
             this.gbCommand.SuspendLayout();
             this.gbResult.SuspendLayout();
@@ -121,6 +122,7 @@ namespace TelnetClient
             // 
             // gbCommand
             // 
+            this.gbCommand.Controls.Add(this.btnInfo);
             this.gbCommand.Controls.Add(this.btnClean);
             this.gbCommand.Controls.Add(this.btnSend);
             this.gbCommand.Controls.Add(this.txtCommand);
@@ -200,6 +202,16 @@ namespace TelnetClient
             this.txtResult.Size = new System.Drawing.Size(613, 378);
             this.txtResult.TabIndex = 0;
             // 
+            // btnInfo
+            // 
+            this.btnInfo.Location = new System.Drawing.Point(246, 91);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(42, 29);
+            this.btnInfo.TabIndex = 8;
+            this.btnInfo.Text = "?";
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -239,6 +251,7 @@ namespace TelnetClient
         private System.Windows.Forms.GroupBox gbResult;
         private System.Windows.Forms.Button btnResultClean;
         private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.Button btnInfo;
     }
 }
 
