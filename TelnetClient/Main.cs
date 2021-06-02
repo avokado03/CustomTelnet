@@ -95,6 +95,12 @@ namespace TelnetClient
         /// </summary>
         private void btnSend_Click(object sender, EventArgs e)
         {
+            var command = txtCommand.Text;
+            if (string.IsNullOrEmpty(command) || string.IsNullOrWhiteSpace(command))
+            {
+                txtResult.Text += LogHelpers.ToLogMessage("Введите команду!");
+                return;
+            }
             _tcpClient.Write(txtCommand.Text);
         }
 
