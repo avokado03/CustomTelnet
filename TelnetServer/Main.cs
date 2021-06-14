@@ -114,7 +114,6 @@ namespace TelnetServer
         {
             btnStart.Enabled = !btnStart.Enabled;
             btnStop.Enabled = !btnStop.Enabled;
-            btnIpInfo.Enabled = !btnIpInfo.Enabled;
         }
 
         /// <summary>
@@ -141,20 +140,6 @@ namespace TelnetServer
         {
             var toIpEndPoint = (IPEndPoint)endPoint;
             return $"{message} {toIpEndPoint.Address}:{toIpEndPoint.Port}";
-        }
-
-        /// <summary>
-        /// Событие кнопки получения информации об IP клиентов.
-        /// </summary>
-        private void btnIpInfo_Click(object sender, EventArgs e)
-        {
-           txtResult.Invoke((MethodInvoker)delegate ()
-           {
-               var ips = _tcpServer.GetListeningIPs();
-               txtResult.Text += LogHelpers.ToLogMessage("Адреса подключенных клиентов:");
-               foreach (var ip in ips)
-                   txtResult.Text += ip.ToString();
-           });
         }
     }
 }
