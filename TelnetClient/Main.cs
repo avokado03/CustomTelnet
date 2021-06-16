@@ -28,7 +28,7 @@ namespace TelnetClient
         private void Main_Load(object sender, EventArgs e)
         {
             _tcpClient = new MyTcpClient();
-            _tcpClient.StringEncoder = Encoding.Unicode;
+            _tcpClient.StringEncoding = Encoding.Unicode;
             _tcpClient.DataReceived += Client_DataReceived;
         }
 

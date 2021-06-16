@@ -51,7 +51,7 @@ namespace TelnetServer
         {
             _tcpServer = new MyTcpServer();
             _cmdService = new CmdService();
-            _tcpServer.StringEncoder = Encoding.Unicode;
+            _tcpServer.stringEncoding = Encoding.Unicode;
             _tcpServer.DataReceived += Server_DataReceived;
             _tcpServer.ClientConnected += Server_ClientConnected;
             _tcpServer.ClientDisconnected += Server_ClientDisconnected;
@@ -100,7 +100,7 @@ namespace TelnetServer
         /// </summary>
         private void btnStop_Click(object sender, EventArgs e)
         {
-            _tcpServer.Broadcast("exit");
+            _tcpServer.SendToClients("exit");
             _tcpServer.Stop();
             txtResult.Text += LogHelpers.ToLogMessage("Сервер остановлен.");
             SwitchFormState();
